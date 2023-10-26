@@ -1,12 +1,29 @@
 <header>
   <h1>Мои заметки</h1>
+  <button (click)="openEditPanel(null)">Добавить заметку</button>
 </header>
 
 <div class="content">
   <menu class="content__nav-notes">
-    <li *ngFor="let note of notes" class="content__small-note"><button>{{note.title}}</button></li>
+    <li *ngFor="let note of notes" class="content__small-note">
+      <button (click)="openViewerPanel(note)">{{note.title}} ({{note.updated | date:"M/d/yy, h:mm a"}})</button>
+      <button (click)="openEditPanel(note)">Редактировать</button>
+    </li>
   </menu>
-  <section class="content__note">
-    <app-note-viewer></app-note-viewer>
-  </section>
+  <ng-container [ngSwitch]="currentPanel">
+
+    <section *ngSwitchCase="Panels.ViewerNote" class="content__note">
+      <app-note-viewer
+      [selectedNote]="selectedNote"
+      ></app-note-viewer>
+    </section>
+
+    <section *ngSwitchCase="Panels.EditNote" class="content__note">
+      <app-note-edit
+      [selectedNote]="selectedNote"
+      [lastID]="notes.length"
+      ></app-note-edit>
+    </section>
+
+</ng-container>
 </div>

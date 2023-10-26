@@ -1,3 +1,6 @@
-<p>
-  note-edit works!
-</p>
+<div>
+  <input type="text"  placeholder="Заголовок" [(ngModel)]="editedNote.title">
+  <textarea placeholder="Тут ваш текст" [(ngModel)]="editedNote.text"></textarea>
+  <time>{{editedNote.updated | date:"M/d/yy, h:mm a"}}</time>
+  <button (click)="saveNote()">{{isNew ? 'Создать' : 'Сохранить'}}</button>
+</div>

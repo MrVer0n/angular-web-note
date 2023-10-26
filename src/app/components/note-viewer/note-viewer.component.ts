@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { NotesModel } from 'src/app/models/notesModel';
 
 @Component({
   selector: 'app-note-viewer',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./note-viewer.component.scss']
 })
 export class NoteViewerComponent implements OnInit {
-
+  @Input() selectedNote!: NotesModel | null;
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

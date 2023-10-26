@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import { NodesModel } from '../models/nodesModel';
+import { NotesModel } from '../models/notesModel';
 
 @Injectable({ providedIn: 'root' })
 export class NotesLoaderService {
 
-  notes: NodesModel[] = [];
+  notes: NotesModel[] = [];
 
   constructor() {
-    this._uploadNotes<NodesModel>();
+    this._uploadNotes<NotesModel>();
   }
 
   private _uploadNotes<T>(): void {
@@ -21,19 +21,19 @@ export class NotesLoaderService {
         {
           id: 0,
           title: "Заголовок 0",
-          dateСreation: new Date(),
+          updated: new Date(),
           text: "Тут текст заметки."
         },
         {
           id: 1,
           title: "Заголовок 1",
-          dateСreation: new Date(),
+          updated: new Date(),
           text: "Тут текст заметки 2."
         },
         {
           id: 2,
           title: "Заголовок 2",
-          dateСreation: new Date(),
+          updated: new Date(),
           text: "Тут текст заметки 2."
         }
       ];
@@ -48,7 +48,7 @@ export class NotesLoaderService {
     return this.notes;
   }
 
-  addNode(dataNodes: NodesModel) {
+  addNode(dataNodes: NotesModel) {
     this.notes = this.notes.concat(dataNodes);
     this._saveNodes();
   }
@@ -58,7 +58,7 @@ export class NotesLoaderService {
     this._saveNodes();
   }
 
-  editNode(updatedNode: NodesModel) {
+  editNode(updatedNode: NotesModel) {
     this.notes.forEach(note => {
       if(note.id === updatedNode.id) Object.assign(note, updatedNode);
     })

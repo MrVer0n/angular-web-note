@@ -1,3 +1,11 @@
-<p>
-  note-viewer works!
-</p>
+<ng-template #noteNotSelected>
+<p><strong>Заметка не выбрана!</strong></p>
+</ng-template>
+
+<div *ngIf="selectedNote; else noteNotSelected">
+  <h3>{{selectedNote.title}}</h3>
+  <time>{{selectedNote.updated | date:"M/d/yy, h:mm a"}}</time>
+  <p>{{selectedNote.text}}</p>
+</div>
+
+
