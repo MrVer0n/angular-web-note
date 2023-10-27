@@ -4,9 +4,11 @@
 
 <div *ngIf="selectedNote; else noteNotSelected">
   <h3>{{selectedNote.title}}</h3>
+  <button (click)="copyContent()">
+    <mat-icon matTooltip="Скопировать ссылку">file_copy</mat-icon>
+  </button>
   <time>{{selectedNote.updated | date:"M/d/yy, h:mm a"}}</time>
   <p>{{selectedNote.text}}</p>
-  <button (click)="copyContent()">Копировать ссылку</button>
 </div>
 
 

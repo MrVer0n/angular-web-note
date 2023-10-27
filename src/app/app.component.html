@@ -1,14 +1,22 @@
-<header>
-  <h1>Мои заметки</h1>
-  <button (click)="openWorkingWithNotePanel(null)">Добавить заметку</button>
+<header class="header-nodes">
+  <h1 class="header-nodes__title">Мои заметки</h1>
+  <button class="header-nodes__icon-button icon-button" (click)="openWorkingWithNotePanel(null)">
+    <mat-icon matTooltip="Добавить заметку">add_circle</mat-icon>
+  </button>
 </header>
 
 <div class="content">
   <menu class="content__nav-notes">
     <li *ngFor="let note of (notes$ | async)" class="content__small-note">
-      <button (click)="openViewerPanel(note)">{{note.title}} ({{note.updated | date:"M/d/yy, h:mm a"}})</button>
-      <button (click)="openWorkingWithNotePanel(note)">Редактировать</button>
-      <button (click)="deleteNode(note)">Удалить</button>
+      <button class="content__choice-note" (click)="openViewerPanel(note)"><div class="content__note-title">{{note.title}} </div>
+        <time class="content__note-updated">{{note.updated | date:"M/d/yy, h:mm a"}}</time>
+      </button>
+      <button class="content__icon-button icon-button" (click)="openWorkingWithNotePanel(note)">
+        <mat-icon matTooltip="Редактировать заметку">edit</mat-icon>
+      </button>
+      <button class="content__icon-button icon-button" (click)="deleteNode(note)">
+        <mat-icon matTooltip="Удалить заметку">delete</mat-icon>
+      </button> 
     </li>
   </menu>
   <ng-container [ngSwitch]="currentPanel">

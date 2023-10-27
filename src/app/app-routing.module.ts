@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [ 
   { path: 'notes', component: AppComponent},
-  { path: '**', redirectTo: '/notes'},
 ];
 
 @NgModule({
