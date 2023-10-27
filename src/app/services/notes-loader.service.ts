@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 
+import { BehaviorSubject } from 'rxjs';
+
 import { NotesModel } from '../models/notesModel';
 
 @Injectable({ providedIn: 'root' })
 export class NotesLoaderService {
 
+  noteStream: BehaviorSubject<NotesModel[]>;
   notes: NotesModel[] = [];
 
   constructor() {
     this._uploadNotes<NotesModel>();
+    this.noteStream = new BehaviorSubject<NotesModel[]>((this.notes))
   }
 
   private _uploadNotes<T>(): void {
@@ -42,10 +46,11 @@ export class NotesLoaderService {
 
   private _saveNodes() {
     localStorage.setItem('dataNodes', JSON.stringify(this.notes));
+    this.noteStream.next(this.notes)
   }
 
   getNodes() {
-    return this.notes;
+    return this.noteStream;
   }
 
   addNode(dataNodes: NotesModel) {
@@ -56,6 +61,10 @@ export class NotesLoaderService {
   deleteNode(id: number) {
     this.notes = this.notes.filter(note => note.id !== id);
     this._saveNodes();
+  }
+
+  findNote(id: number) {
+    return this.notes.filter(note => note.id == id)[0];
   }
 
   editNode(updatedNode: NotesModel) {

@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { DatePipe } from '@angular/common';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NotesLoaderService } from './services/notes-loader.service';
-import { NoteViewerComponent } from './components/note-viewer/note-viewer.component';
-import { NoteEditComponent } from './components/note-edit/note-edit.component';
-import { NoteAddComponent } from './components/note-add/note-add.component';
 import { FormsModule } from '@angular/forms';
+
+import { ClipboardModule } from 'ngx-clipboard';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NoteViewerComponent } from './components/note-viewer/note-viewer.component';
+import { NoteEditComponent } from './components/working-with-note/working-with-note.component';
+import { NotesLoaderService } from './services/notes-loader.service';
 
 const COMPONENTS = [
   AppComponent,
   NoteViewerComponent,
-  NoteAddComponent,
   NoteEditComponent
 ];
 const SERVICES = [
@@ -26,7 +26,8 @@ const SERVICES = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ClipboardModule
   ],
   providers: SERVICES,
   bootstrap: [AppComponent]

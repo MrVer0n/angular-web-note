@@ -1,6 +1,7 @@
 <div>
-  <input type="text"  placeholder="Заголовок" [(ngModel)]="editedNote.title">
+  <input required="true" type="text" placeholder="Заголовок" [(ngModel)]="editedNote.title">
   <textarea placeholder="Тут ваш текст" [(ngModel)]="editedNote.text"></textarea>
   <time>{{editedNote.updated | date:"M/d/yy, h:mm a"}}</time>
+  <button (click)="exitEditor()">Отмена</button>
   <button (click)="saveNote()">{{isNew ? 'Создать' : 'Сохранить'}}</button>
 </div>

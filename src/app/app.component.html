@@ -1,28 +1,30 @@
 <header>
   <h1>Мои заметки</h1>
-  <button (click)="openEditPanel(null)">Добавить заметку</button>
+  <button (click)="openWorkingWithNotePanel(null)">Добавить заметку</button>
 </header>
 
 <div class="content">
   <menu class="content__nav-notes">
-    <li *ngFor="let note of notes" class="content__small-note">
+    <li *ngFor="let note of (notes$ | async)" class="content__small-note">
       <button (click)="openViewerPanel(note)">{{note.title}} ({{note.updated | date:"M/d/yy, h:mm a"}})</button>
-      <button (click)="openEditPanel(note)">Редактировать</button>
+      <button (click)="openWorkingWithNotePanel(note)">Редактировать</button>
+      <button (click)="deleteNode(note)">Удалить</button>
     </li>
   </menu>
   <ng-container [ngSwitch]="currentPanel">
-
+    
     <section *ngSwitchCase="Panels.ViewerNote" class="content__note">
       <app-note-viewer
       [selectedNote]="selectedNote"
+      [NoteURL]="NoteURL"
       ></app-note-viewer>
     </section>
 
-    <section *ngSwitchCase="Panels.EditNote" class="content__note">
-      <app-note-edit
+    <section *ngSwitchCase="Panels.WorkingWithNote" class="content__note">
+      <app-working-with-note
       [selectedNote]="selectedNote"
-      [lastID]="notes.length"
-      ></app-note-edit>
+      (onChengeNote)="openViewerPanel($event)"
+      ></app-working-with-note>
     </section>
 
 </ng-container>

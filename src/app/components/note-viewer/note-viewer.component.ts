@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { ClipboardService } from 'ngx-clipboard';
+
 import { NotesModel } from 'src/app/models/notesModel';
 
 @Component({
@@ -7,12 +9,12 @@ import { NotesModel } from 'src/app/models/notesModel';
   templateUrl: './note-viewer.component.html',
   styleUrls: ['./note-viewer.component.scss']
 })
-export class NoteViewerComponent implements OnInit {
+export class NoteViewerComponent {
   @Input() selectedNote!: NotesModel | null;
-  constructor() { }
+  @Input() NoteURL!: URL;
 
-  ngOnInit() {
+  constructor(private clipboardService: ClipboardService) { }
 
-  }
+  copyContent() { this.clipboardService.copyFromContent(this.NoteURL.toString()) }
 
 }
