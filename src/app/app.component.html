@@ -3,11 +3,17 @@
   <button class="header-nodes__icon-button icon-button" (click)="openWorkingWithNotePanel(null)">
     <mat-icon matTooltip="Добавить заметку">add_circle</mat-icon>
   </button>
+  <input maxlength="86" class="header-nodes__search-note" type="text" placeholder="Поиск" [(ngModel)]="searchNoteTitle">
 </header>
 
 <div class="content">
   <menu class="content__nav-notes">
-    <li *ngFor="let note of (notes$ | async)" class="content__small-note">
+    <ng-container *ngIf="!((notes$ | async) | searchNote: searchNoteTitle)[0]">
+      <div class="content__empty-notes">
+        <p><strong>Не найдено!</strong></p>
+      </div>
+    </ng-container>
+    <li *ngFor="let note of (notes$ | async) | searchNote: searchNoteTitle" class="content__small-note">
       <button class="content__choice-note" (click)="openViewerPanel(note)"><div class="content__note-title">{{note.title}} </div>
         <time class="content__note-updated">{{note.updated | date:"M/d/yy, h:mm a"}}</time>
       </button>

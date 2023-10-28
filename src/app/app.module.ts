@@ -13,12 +13,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { NoteViewerComponent } from './components/note-viewer/note-viewer.component';
 import { NoteEditComponent } from './components/working-with-note/working-with-note.component';
 import { NotesLoaderService } from './services/notes-loader.service';
+import { SearchNotePipe } from './pipes/search-note.pipe';
 
 
 const COMPONENTS = [
   AppComponent,
   NoteViewerComponent,
-  NoteEditComponent
+  NoteEditComponent,
+  SearchNotePipe
 ];
 const SERVICES = [
   NotesLoaderService,

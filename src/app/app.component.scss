@@ -1,5 +1,12 @@
 $index: calc(1vh + 1vw);
 
+input:focus {
+    outline: none;
+}
+input::placeholder {
+    color: rgba(255, 255, 255, 0.699);
+}
+
 .header-nodes {
     display: flex;
     align-items: center;
@@ -12,6 +19,18 @@ $index: calc(1vh + 1vw);
     }
     &__icon-button {
         margin-top: 6px
+    }
+    &__search-note {
+        margin-top: 4px;
+        background-color: rgb(105, 95, 172);
+        color: white;
+        border: 1px solid;
+        border-radius: 8px;
+        font-size: x-large;
+    }
+    &__search-note:hover {
+        background-color: rgb(131, 119, 209);
+        color: white;
     }
 }
 .icon-button {
@@ -30,6 +49,17 @@ $index: calc(1vh + 1vw);
 .content {
     display: flex;
     min-height: calc(100% - 46px);
+
+    &__empty-notes {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
     &__nav-notes {
         all: unset;
         display: flex;

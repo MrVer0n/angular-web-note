@@ -24,7 +24,27 @@ export class AppComponent {
   selectedNote: NotesModel | null = null;
   readonly notes$ = this.notesLoaderService.getNodes();
   NoteURL!: URL;
-
+  searchNoteTitle: string = '';
+  notes = [
+    {
+      id: 0,
+      title: "Заголовок 0",
+      updated: new Date(),
+      text: "Тут текст заметки."
+    },
+    {
+      id: 1,
+      title: "Заголовок 1",
+      updated: new Date(),
+      text: "Тут текст заметки 2."
+    },
+    {
+      id: 2,
+      title: "Заголовок 2",
+      updated: new Date(),
+      text: "Тут текст заметки 2."
+    }
+  ];
   constructor(
     protected notesLoaderService: NotesLoaderService,
     private route: ActivatedRoute,
