@@ -1,27 +1,24 @@
-# AngularWebNote
+# AngularWebNote:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+A small application for working with notes
 
-## Development server
+## For start application:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Clone the repository - `git clone https://github.com/MrVer0n/angular-web-note.git`;
 
-## Code scaffolding
+Install dependencies - `npm install`;
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run dev server - `ng serve`;
 
-## Build
+Navigate to - [http://localhost:4200/](http://localhost:4200/).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Application picture:
 
-## Running unit tests
+![image](https://github.com/MrVer0n/angular-web-note/assets/86586405/16b67218-0ca2-4e77-afb3-fa93f2c1d818)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Video demonstration of the application:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+https://github.com/MrVer0n/angular-web-note/assets/86586405/0aec8577-e920-4185-bed9-0903518f9dca
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
