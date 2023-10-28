@@ -1,14 +1,27 @@
 <ng-template #noteNotSelected>
-<p><strong>Заметка не выбрана!</strong></p>
+  <div class="note-not-selected">
+    <p><strong>Заметка не выбрана!</strong></p>
+  </div>
 </ng-template>
 
-<div *ngIf="selectedNote; else noteNotSelected">
-  <h3>{{selectedNote.title}}</h3>
-  <button (click)="copyContent()">
-    <mat-icon matTooltip="Скопировать ссылку">file_copy</mat-icon>
-  </button>
-  <time>{{selectedNote.updated | date:"M/d/yy, h:mm a"}}</time>
-  <p>{{selectedNote.text}}</p>
+<div *ngIf="selectedNote; else noteNotSelected" class="note">
+  <div class="note__additional-info additional-info">
+    <button class="note__additional-info__icon-button icon-button" (click)="exitEditor()">
+      <mat-icon matTooltip="Назад">arrow_back</mat-icon>
+    </button>
+    <time class="note__updated-note updated-note">{{selectedNote.updated | date:"M/d/yy, h:mm a"}}</time>
+    <span class="note__length-note length-note">{{selectedNote.title.length + selectedNote.text.length }}</span>
+    <div class="note__empty"></div>
+    <div class="note__empty"></div>
+    <button class="note__icon-button icon-button" (click)="copyContent()">
+      <mat-icon matTooltip="Скопировать ссылку">file_copy</mat-icon>
+    </button>
+  </div>
+  <hr>
+  <div class="note__header">
+    <h3 class="note__title">{{selectedNote.title}}</h3>
+  </div>  
+  <p class="note__text">{{selectedNote.text}}</p>
 </div>
 
 

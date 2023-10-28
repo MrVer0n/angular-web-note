@@ -6,7 +6,7 @@ import { take } from 'rxjs';
 import { NotesModel } from './models/notesModel';
 import { NotesLoaderService } from './services/notes-loader.service';
 
-const HOST = "http://localhost:4200/";
+const HOST = 'http://localhost:4200/';
 
 enum Panels {
   ViewerNote,
@@ -42,10 +42,14 @@ export class AppComponent {
     });
   }
 
-  openViewerPanel(note: NotesModel) {
-    this.selectedNote = note;
-    this.router.navigate(['notes'], { queryParams: { id: note.id } });
-    this.NoteURL = new URL(HOST + 'notes?id=' + note.id);
+  openViewerPanel(note: NotesModel | null) {
+    if(note) {
+      this.selectedNote = note;
+      this.router.navigate(['notes'], { queryParams: { id: note.id } });
+      this.NoteURL = new URL(HOST + 'notes?id=' + note.id);
+    } else {
+      this.router.navigate(['notes']);
+    }
     this.currentPanel = Panels.ViewerNote;
   }
 

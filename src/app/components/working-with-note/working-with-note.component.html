@@ -1,7 +1,21 @@
-<div>
-  <input required="true" type="text" placeholder="Заголовок" [(ngModel)]="editedNote.title">
-  <textarea placeholder="Тут ваш текст" [(ngModel)]="editedNote.text"></textarea>
-  <time>{{editedNote.updated | date:"M/d/yy, h:mm a"}}</time>
-  <button (click)="exitEditor()">Отмена</button>
-  <button (click)="saveNote()">{{isNew ? 'Создать' : 'Сохранить'}}</button>
+<div class="workspace-note">
+  <div class="workspace-note__additional-info additional-info">
+    <button class="editing-space-note__icon-button icon-button" (click)="exitEditor()">
+      <mat-icon matTooltip="Отмена">arrow_back</mat-icon>
+    </button>
+    <time class="workspace-note__updated-note updated-note">{{editedNote.updated | date:"M/d/yy, h:mm a"}}</time>
+    <span class="workspace-note__length-note length-note">{{editedNote.title.length + editedNote.text.length }}</span>
+    <div class="workspace-note__empty"></div>
+    <button [ngClass]="editedNote.title.length + editedNote.text.length ? 'workspace-note__icon-button' : 'workspace-note__icon-button_disabled'" [disabled]="editedNote.title.length + editedNote.text.length ? false : true" class="editing-space-note__icon-button icon-button" (click)="saveNote()">
+      <mat-icon matTooltip="{{isNew ? 'Создать' : 'Сохранить'}}">save</mat-icon>
+    </button>
+    <button disabled class="workspace-note__icon-button_disabled icon-button">
+      <mat-icon>file_copy</mat-icon>
+    </button>
+  </div>
+  <hr>
+  <div class="editing-space-note">
+    <input maxlength="86" class="editing-space-note__title" type="text" placeholder="Заголовок" [(ngModel)]="editedNote.title">
+    <textarea #textArea (input)="textAreaAdjust()" class="editing-space-note__text" placeholder="Тут ваш текст" [(ngModel)]="editedNote.text"></textarea>
+  </div>
 </div>

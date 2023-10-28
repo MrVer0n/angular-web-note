@@ -1,0 +1,62 @@
+@import url(../../app.component.scss);
+
+.note-not-selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+hr {
+    border: none; 
+    color: rgba(255, 255, 255, 0.801); 
+    background-color: rgba(255, 255, 255, 0.801);
+    height: .5px;
+}
+
+.additional-info {
+    display: grid;
+    grid-template-columns: 34px 86px 34px auto 34px 34px;
+    align-items: center;
+    height: 26px;
+}
+
+.length-note {
+    color: rgba(255, 255, 255, 0.801);
+    font-size: .6rem;
+    font-style: italic;
+    margin-left: 8px;
+}
+
+.updated-note {
+    color: rgba(255, 255, 255, 0.801);
+    font-size: .6rem;
+    font-style: italic;
+}
+
+
+.note {
+    color: white;
+    margin: 16px 16px;
+
+    &__icon-button {
+        font-size: 16px;
+    }
+    &__header {
+        display: flex;
+        flex-direction: column;
+        height: 46px;
+    }
+    &__title {
+        margin-top: 4px;
+        font-size: 1.7rem;
+        font-weight: 400;
+    }
+    &__text {
+        white-space: pre-wrap;
+        font-size: 1rem;
+    }
+}

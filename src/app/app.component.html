@@ -24,6 +24,7 @@
     <section *ngSwitchCase="Panels.ViewerNote" class="content__note">
       <app-note-viewer
       [selectedNote]="selectedNote"
+      (onChengeNote)="openViewerPanel($event)"
       [NoteURL]="NoteURL"
       ></app-note-viewer>
     </section>
@@ -35,5 +36,5 @@
       ></app-working-with-note>
     </section>
 
-</ng-container>
+  </ng-container>
 </div>

@@ -1,0 +1,48 @@
+@import url(../note-viewer/note-viewer.component.scss);
+
+$index: calc(1vh + 1vw);
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+// input:focus::placeholder,
+// textarea:focus::placeholder {
+//     color: transparent;
+// }
+input, textarea {
+    padding: 0;
+}
+.workspace-note {
+    color: white;
+    margin: 16px 16px;
+
+    &__icon-button_disabled {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.459);
+        pointer-events: none;
+    }
+}
+
+.editing-space-note {
+    display: grid;
+    &__title {
+        color: white;
+        font-size: 1.7rem;
+        font-weight: 400;
+        background-color: transparent;
+        border: none;
+        margin-bottom: 16px;
+    }
+    &__text {
+        resize:none;
+        font-size: 1rem;
+        min-height: 50vh;
+        background-color: transparent;
+        color: white;
+        border: none;
+    }
+}
